@@ -1,0 +1,31 @@
+.card {
+  position: relative;
+  width: 323px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 19px;
+}
+
+.card__title {
+  position: absolute;
+  top: 15px;
+  margin: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  opacity: 0.6;
+  padding: 2px 12px;
+  background-color: white;
+  border-radius: 4px;
+  gap: 8px;
+}
+
+.card__image {
+  width: 100%;
+  object-fit: cover;
+}

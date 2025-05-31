@@ -1,8 +1,13 @@
-.page {
+body {
   background-color: #f3f3f3;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+}
+
+.page {
   color: #000;
-  height: 100svh;
-  width: 100svw;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .page__content {
