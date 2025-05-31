@@ -3,11 +3,16 @@ import logo from "../../assets/main-logo.svg";
 import user from "../../assets/user-logo.svg";
 
 function Header() {
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <header className="header">
       <div className="header__left">
         <img src={logo} alt="Logo" className="header__logo" />
-        <p className="header__date-and-location">Date and location</p>
+        <p className="header__date-and-location">{currentDate}, New York</p>
       </div>
       <div className="header__right">
         <button className="header__button">+ Add Clothes</button>
