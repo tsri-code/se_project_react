@@ -16,6 +16,7 @@
   margin: 0;
   position: absolute;
   padding: 16px 8px;
+  margin: 4px 8px;
 }
 
 .weather__card-image {

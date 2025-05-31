@@ -8,7 +8,9 @@ function Main({ weatherData }) {
     <main>
       <WeatherCard />
       <section className="cards">
-        <p>Today is 75 &deg; F / You may want to wear:</p>
+        <p className="cards__title">
+          Today is 75 &deg; F / You may want to wear:
+        </p>
         <ul className="cards__list">
           {defaultClothingItems
             // .filter((item) => {
