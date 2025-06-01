@@ -137,6 +137,15 @@
   opacity: 0.6;
 }
 
+.modal__button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.modal__button:disabled:hover {
+  opacity: 0.3;
+}
+
 .modal__input {
   border: none;
   border-bottom: 1px solid #000;
