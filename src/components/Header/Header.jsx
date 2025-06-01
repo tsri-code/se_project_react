@@ -2,7 +2,7 @@ import "./Header.css";
 import logo from "../../assets/main-logo.svg";
 import user from "../../assets/user-logo.svg";
 
-function Header({ handleAddGarment }) {
+function Header({ handleAddGarment, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -12,7 +12,9 @@ function Header({ handleAddGarment }) {
     <header className="header">
       <div className="header__left">
         <img src={logo} alt="Logo" className="header__logo" />
-        <p className="header__date-and-location">{currentDate}, New York</p>
+        <p className="header__date-and-location">
+          {currentDate}, {weatherData.city}
+        </p>
       </div>
       <div className="header__right">
         <button
