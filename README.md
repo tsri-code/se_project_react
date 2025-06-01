@@ -1,8 +1,18 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Title: se_project_react
 
-Currently, two official plugins are available:
+This project serves as a weather assistant to determine the weather at your location and provide a set of suggested clothing based on that weather type.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The technologies used in this project are,
+
+- HTML
+- CSS
+- Javascript
+- React.js
+- VITE
+- FIGMA
+
+I am working to finish all the optional portions of this project. I just wanted to submit the required portions first.
+
+site: https://tsri-code.github.io/se_project_react/
