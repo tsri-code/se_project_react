@@ -6,30 +6,29 @@ function ModalWithForm({
   children,
   buttonText,
   title,
-  activeModal,
+  isOpen,
   onClose,
   name,
   isButtonDisabled,
 }) {
   useEffect(() => {
-    const handleEscape = (e) => {
+    if (!isOpen) return;
+
+    const handleEscClose = (e) => {
       if (e.key === "Escape") {
         onClose();
       }
     };
 
-    if (activeModal === "add-garment") {
-      document.addEventListener("keydown", handleEscape);
-      return () => document.removeEventListener("keydown", handleEscape);
-    }
-  }, [activeModal, onClose]);
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [isOpen]);
 
   return (
-    <div
-      className={`modal modal_type_${name} ${
-        activeModal === "add-garment" ? "modal_opened" : ""
-      }`}
-    >
+    <div className={`modal modal_type_${name} ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__overlay" onClick={onClose}></div>
       <div className="modal__container">
         <h2 className="modal__title">{title}</h2>

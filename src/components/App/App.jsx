@@ -57,6 +57,23 @@ function App() {
     setSelectedWeather("");
   };
 
+  // escape key listener to close modals
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   useEffect(() => {
     getWeatherData()
       .then((data) => {
@@ -77,7 +94,7 @@ function App() {
       <ModalWithForm
         buttonText="Add garment"
         title="New Garment"
-        activeModal={activeModal}
+        isOpen={activeModal === "add-garment"}
         onClose={closeActiveModal}
         name="add-garment"
         isButtonDisabled={!isFormValid}
