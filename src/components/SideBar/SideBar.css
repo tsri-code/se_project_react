@@ -1,0 +1,18 @@
+.sidebar {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+  margin-top: 19px;
+}
+
+.sidebar__name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  margin-top: 35px;
+}

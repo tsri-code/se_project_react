@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from "../../assets/main-logo.svg";
 import user from "../../assets/user-logo.svg";
@@ -12,7 +13,9 @@ function Header({ handleAddGarment, weatherData, handleToggleSwitchChange }) {
   return (
     <header className="header">
       <div className="header__left">
-        <img src={logo} alt="Logo" className="header__logo" />
+        <Link to="/se_project_react">
+          <img src={logo} alt="Logo" className="header__logo" />
+        </Link>
         <p className="header__date-and-location">
           {currentDate}, {weatherData.city}
         </p>
@@ -26,10 +29,10 @@ function Header({ handleAddGarment, weatherData, handleToggleSwitchChange }) {
         >
           + Add Clothes
         </button>
-        <div className="header__user-container">
+        <Link to="/se_project_react/profile" className="header__user-container">
           <p className="header__user-name">Terence Tegegne</p>
           <img src={user} alt="Terence Tegegne" className="header__avatar" />
-        </div>
+        </Link>
       </div>
     </header>
   );
