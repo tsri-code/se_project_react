@@ -35,6 +35,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .modal__name {
@@ -56,4 +57,22 @@
   color: #000;
   margin-left: 32px;
   margin-bottom: 32px;
+}
+
+.modal__delete-button {
+  position: absolute;
+  top: 20px;
+  right: 32px;
+  background: transparent;
+  border: none;
+  color: #ff4d00;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.modal__delete-button:hover {
+  opacity: 0.6;
 }

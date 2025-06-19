@@ -7,9 +7,10 @@ import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { defaultClothingItems } from "../../utils/constants";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 
 function App() {
   // setting up all the state we need for the app
@@ -19,7 +20,7 @@ function App() {
     city: "",
     time: "",
   });
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -48,11 +49,35 @@ function App() {
   };
 
   const handleAddItemModalSubmit = (item) => {
-    setClothingItems((prevItems) => [
-      { name: item.name, link: item.imageUrl, weather: item.weatherType },
-      ...prevItems,
-    ]);
-    closeActiveModal();
+    addItem({
+      name: item.name,
+      imageUrl: item.imageUrl,
+      weather: item.weatherType,
+    })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleDeleteItem = () => {
+    setActiveModal("delete-confirmation");
+  };
+
+  const handleDeleteConfirm = () => {
+    deleteItem(selectedCard._id)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item._id !== selectedCard._id)
+        );
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // escape key listener to close modals
@@ -76,6 +101,16 @@ function App() {
     getWeatherData()
       .then((data) => {
         setWeatherData(filterWeatherData(data));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
       })
       .catch((err) => {
         console.log(err);
@@ -106,7 +141,13 @@ function App() {
             />
             <Route
               path="/se_project_react/profile"
-              element={<Profile handleCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  handleCardClick={handleCardClick}
+                  handleAddGarment={handleAddGarment}
+                  clothingItems={clothingItems}
+                />
+              }
             />
           </Routes>
           <Footer />
@@ -120,6 +161,12 @@ function App() {
           activeModal={activeModal}
           selectedCard={selectedCard}
           onClose={closeActiveModal}
+          onDelete={handleDeleteItem}
+        />
+        <ConfirmationModal
+          isOpen={activeModal === "delete-confirmation"}
+          onClose={closeActiveModal}
+          onConfirm={handleDeleteConfirm}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

@@ -1,0 +1,72 @@
+.modal__container_type_confirmation {
+  width: 670px;
+  height: 280px;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.modal__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.modal__close-button {
+  width: 20px;
+  height: 20px;
+}
+
+.modal__confirmation-title {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #000;
+  width: 367px;
+  margin-bottom: 40px;
+  margin-top: 60px;
+}
+
+.modal__confirmation-buttons {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 60px;
+}
+
+.modal__confirmation-button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  margin: 0;
+}
+
+.modal__confirmation-button_type_delete {
+  background-color: transparent;
+  color: #ff4d00;
+  margin-bottom: 24px;
+}
+
+.modal__confirmation-button_type_cancel {
+  background-color: transparent;
+  border: none;
+  color: #000;
+}
