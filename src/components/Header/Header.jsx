@@ -13,7 +13,7 @@ function Header({ handleAddGarment, weatherData, handleToggleSwitchChange }) {
   return (
     <header className="header">
       <div className="header__left">
-        <Link to="/se_project_react">
+        <Link to="/">
           <img src={logo} alt="Logo" className="header__logo" />
         </Link>
         <p className="header__date-and-location">
@@ -29,7 +29,7 @@ function Header({ handleAddGarment, weatherData, handleToggleSwitchChange }) {
         >
           + Add Clothes
         </button>
-        <Link to="/se_project_react/profile" className="header__user-container">
+        <Link to="/profile" className="header__user-container">
           <p className="header__user-name">Terence Tegegne</p>
           <img src={user} alt="Terence Tegegne" className="header__avatar" />
         </Link>
