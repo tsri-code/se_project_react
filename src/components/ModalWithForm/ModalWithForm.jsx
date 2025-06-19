@@ -10,6 +10,7 @@ function ModalWithForm({
   onClose,
   name,
   isButtonDisabled,
+  onSubmit,
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -35,7 +36,7 @@ function ModalWithForm({
         <button type="button" className="modal__close-button" onClick={onClose}>
           <img src={closeIcon} alt="Close" className="modal__close-icon" />
         </button>
-        <form className="modal__form" name={name}>
+        <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
           <button
             type="submit"

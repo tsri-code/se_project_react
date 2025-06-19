@@ -4,11 +4,12 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeatherData, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import AddItemModal from "../AddItemModal/AddItemModal";
+import { defaultClothingItems } from "../../utils/constants";
 
 function App() {
   // setting up all the state we need for the app
@@ -18,8 +19,7 @@ function App() {
     city: "",
     time: "",
   });
-  const [selectedWeather, setSelectedWeather] = useState("");
-  const [formData, setFormData] = useState({ name: "", imageUrl: "" });
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
@@ -27,23 +27,6 @@ function App() {
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
-
-  // handle when user picks a weather type in the form
-  const handleWeatherChange = (e) => {
-    setSelectedWeather(e.target.value);
-  };
-
-  // handle when user types in the form inputs
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  // check if the form has any content to enable/disable submit button
-  const isFormValid =
-    formData.name.trim() !== "" ||
-    formData.imageUrl.trim() !== "" ||
-    selectedWeather !== "";
 
   // modal state management
   const [activeModal, setActiveModal] = useState("");
@@ -59,11 +42,17 @@ function App() {
     setSelectedCard(card);
   };
 
-  // close any open modal and reset form data
+  // close any open modal
   const closeActiveModal = () => {
     setActiveModal("");
-    setFormData({ name: "", imageUrl: "" });
-    setSelectedWeather("");
+  };
+
+  const handleAddItemModalSubmit = (item) => {
+    setClothingItems((prevItems) => [
+      { name: item.name, link: item.imageUrl, weather: item.weatherType },
+      ...prevItems,
+    ]);
+    closeActiveModal();
   };
 
   // escape key listener to close modals
@@ -111,104 +100,22 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
                 />
               }
             />
-            <Route path="/se_project_react/profile" element={<Profile />} />
+            <Route
+              path="/se_project_react/profile"
+              element={<Profile handleCardClick={handleCardClick} />}
+            />
           </Routes>
           <Footer />
         </div>
-        <ModalWithForm
-          buttonText="Add garment"
-          title="New Garment"
+        <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
-          name="add-garment"
-          isButtonDisabled={!isFormValid}
-        >
-          <div className="modal__input-container">
-            <label className="modal__label">
-              Name
-              <input
-                type="text"
-                className="modal__input"
-                placeholder="Name"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label htmlFor="imageURL" className="modal__label">
-              Image
-              <input
-                type="text"
-                className="modal__input"
-                placeholder="Image URL"
-                id="imageURL"
-                name="imageUrl"
-                value={formData.imageUrl}
-                onChange={handleInputChange}
-              />
-            </label>
-            <fieldset className="modal__radio-fieldset">
-              <legend className="modal__legend">
-                Select the weather type:
-              </legend>
-              <label
-                className="modal__radio-label"
-                style={{
-                  opacity:
-                    selectedWeather && selectedWeather !== "hot" ? 0.5 : 1,
-                }}
-              >
-                <input
-                  type="radio"
-                  name="weatherType"
-                  value="hot"
-                  className="modal__radio"
-                  id="hot"
-                  onChange={handleWeatherChange}
-                />
-                Hot
-              </label>
-              <label
-                className="modal__radio-label"
-                style={{
-                  opacity:
-                    selectedWeather && selectedWeather !== "warm" ? 0.5 : 1,
-                }}
-              >
-                <input
-                  type="radio"
-                  name="weatherType"
-                  value="warm"
-                  className="modal__radio"
-                  id="warm"
-                  onChange={handleWeatherChange}
-                />
-                Warm
-              </label>
-              <label
-                className="modal__radio-label"
-                style={{
-                  opacity:
-                    selectedWeather && selectedWeather !== "cold" ? 0.5 : 1,
-                }}
-              >
-                <input
-                  type="radio"
-                  name="weatherType"
-                  value="cold"
-                  className="modal__radio"
-                  id="cold"
-                  onChange={handleWeatherChange}
-                />
-                Cold
-              </label>
-            </fieldset>
-          </div>
-        </ModalWithForm>
+          onAddItemModalSubmit={handleAddItemModalSubmit}
+        />
         <ItemModal
           activeModal={activeModal}
           selectedCard={selectedCard}

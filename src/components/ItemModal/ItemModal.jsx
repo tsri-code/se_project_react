@@ -9,7 +9,7 @@ function ItemModal({ activeModal, selectedCard, onClose }) {
       }`}
     >
       <div className="modal__overlay" onClick={onClose}></div>
-      <div className="modal__container modal__container_type_image">
+      <div className="modal__container_type_image">
         <button type="button" className="modal__close-button" onClick={onClose}>
           <img src={closeIcon} alt="Close" className="modal__close-icon" />
         </button>
