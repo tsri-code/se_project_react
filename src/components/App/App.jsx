@@ -1,16 +1,25 @@
+// React and external library imports
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import "./App.css";
+
+// Component imports
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
-import { getWeatherData, filterWeatherData } from "../../utils/weatherApi";
-import { getItems, addItem, deleteItem } from "../../utils/api";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+
+// Utility and API imports
+import { getWeatherData, filterWeatherData } from "../../utils/weatherApi";
+import { getItems, addItem, deleteItem } from "../../utils/api";
+
+// Context imports
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+
+// CSS imports
+import "./App.css";
 
 function App() {
   // setting up all the state we need for the app
@@ -23,11 +32,6 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-
-  // handle temperature unit toggle
-  const handleToggleSwitchChange = () => {
-    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
-  };
 
   // modal state management
   const [activeModal, setActiveModal] = useState("");
@@ -126,7 +130,6 @@ function App() {
           <Header
             handleAddGarment={handleAddGarment}
             weatherData={weatherData}
-            handleToggleSwitchChange={handleToggleSwitchChange}
           />
           <Routes>
             <Route

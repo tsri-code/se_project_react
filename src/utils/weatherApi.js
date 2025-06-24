@@ -1,14 +1,10 @@
 import { coordinates, weatherApiKey } from "./constants";
+import { checkResponse } from "./api";
 
 export const getWeatherData = async () => {
   const response = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.latitude}&lon=${coordinates.longitude}&units=imperial&appid=${weatherApiKey}`
-  ).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  ).then(checkResponse);
   return response;
 };
 

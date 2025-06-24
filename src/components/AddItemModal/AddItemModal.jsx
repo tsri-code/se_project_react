@@ -54,7 +54,7 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
       onSubmit={handleSubmit}
     >
       <div className="modal__input-container">
-        <label className="modal__label">
+        <label htmlFor="name" className="modal__label">
           Name
           <input
             type="text"
@@ -85,10 +85,12 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
         <fieldset className="modal__radio-fieldset">
           <legend className="modal__legend">Select the weather type:</legend>
           <label
-            className="modal__radio-label"
-            style={{
-              opacity: weatherType && weatherType !== "hot" ? 0.5 : 1,
-            }}
+            htmlFor="hot"
+            className={`modal__radio-label ${
+              weatherType && weatherType !== "hot"
+                ? "modal__radio-label_faded"
+                : ""
+            }`}
           >
             <input
               type="radio"
@@ -102,10 +104,12 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
             Hot
           </label>
           <label
-            className="modal__radio-label"
-            style={{
-              opacity: weatherType && weatherType !== "warm" ? 0.5 : 1,
-            }}
+            htmlFor="warm"
+            className={`modal__radio-label ${
+              weatherType && weatherType !== "warm"
+                ? "modal__radio-label_faded"
+                : ""
+            }`}
           >
             <input
               type="radio"
@@ -119,10 +123,12 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
             Warm
           </label>
           <label
-            className="modal__radio-label"
-            style={{
-              opacity: weatherType && weatherType !== "cold" ? 0.5 : 1,
-            }}
+            htmlFor="cold"
+            className={`modal__radio-label ${
+              weatherType && weatherType !== "cold"
+                ? "modal__radio-label_faded"
+                : ""
+            }`}
           >
             <input
               type="radio"

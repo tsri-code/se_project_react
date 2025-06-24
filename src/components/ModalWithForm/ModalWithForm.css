@@ -118,6 +118,10 @@
   font-weight: 700;
 }
 
+.modal__radio-label_faded {
+  opacity: 0.5;
+}
+
 .modal__button {
   width: 124px;
   height: 36px;

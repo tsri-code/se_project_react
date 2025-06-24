@@ -4,7 +4,7 @@ import logo from "../../assets/main-logo.svg";
 import user from "../../assets/user-logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({ handleAddGarment, weatherData, handleToggleSwitchChange }) {
+function Header({ handleAddGarment, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -21,7 +21,7 @@ function Header({ handleAddGarment, weatherData, handleToggleSwitchChange }) {
         </p>
       </div>
       <div className="header__right">
-        <ToggleSwitch handleToggleSwitchChange={handleToggleSwitchChange} />
+        <ToggleSwitch />
         <button
           onClick={handleAddGarment}
           type="button"
