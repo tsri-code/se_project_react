@@ -22,9 +22,6 @@ function AddItemModal({ isOpen, onClose, onAddItemModalSubmit }) {
       imageUrl,
       weatherType,
     });
-    setName("");
-    setImageUrl("");
-    setWeatherType("");
   };
 
   const handleNameChange = (e) => {
