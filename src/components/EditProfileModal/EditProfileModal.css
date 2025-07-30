@@ -1,0 +1,102 @@
+.modal_type_edit-profile .modal__container {
+  width: 496px;
+  height: 304px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.modal_type_edit-profile .modal__close-button {
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  right: 28px;
+}
+
+.modal_type_edit-profile .modal__title {
+  width: 137px;
+  height: 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  margin: 28px 0 0 28px;
+  color: #000;
+}
+
+.modal_type_edit-profile .modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_type_edit-profile .modal__input-field {
+  width: 440px;
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 28px;
+  box-sizing: border-box;
+}
+
+.modal_type_edit-profile .modal__input-field:nth-child(2) {
+  margin-top: 24px;
+}
+
+.modal_type_edit-profile .modal__label {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.modal_type_edit-profile .modal__input {
+  width: 440px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #000000;
+  background: transparent;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.modal_type_edit-profile .modal__input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.modal_type_edit-profile .modal__button {
+  width: 156px;
+  height: 36px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  cursor: pointer;
+  margin-left: 28px;
+  margin-bottom: 36px;
+  margin-top: 32px;
+  box-sizing: border-box;
+}
+
+.modal_type_edit-profile .modal__button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,146 @@
+/* SignUpModal specific styles */
+
+/* Modal container */
+.modal_type_signup-modal .modal__container {
+  height: 456px;
+  padding-bottom: 0;
+  transition: height 0.3s ease;
+}
+
+.modal_type_signup-modal .modal__container_error {
+  height: 500px;
+}
+
+/* Close button positioning */
+.modal_type_signup-modal .modal__close-button {
+  top: 20px;
+  right: 20px;
+}
+
+/* Form layout */
+.modal_type_signup-modal .modal__form {
+  gap: 0;
+}
+
+/* Input field containers */
+.signup-modal__input-field {
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-modal__input-field:not(:last-of-type) {
+  margin-bottom: 24px;
+}
+
+.signup-modal__input-field:last-of-type {
+  margin-bottom: 0 !important;
+}
+
+/* Avatar URL field - no bottom margin */
+.signup-modal__input-field--avatar {
+  margin: 0 !important;
+}
+
+/* Labels */
+.modal_type_signup-modal .modal__label {
+  width: auto;
+  height: 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #000;
+  margin-bottom: 8px;
+  white-space: nowrap;
+}
+
+/* Input fields */
+.modal_type_signup-modal .modal__input {
+  width: 440px;
+  height: 24px;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 0;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #000;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.modal_type_signup-modal .modal__input::placeholder {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #000;
+  opacity: 0.5;
+}
+
+/* Button container */
+.modal_type_signup-modal .modal__button-container {
+  width: 168px;
+  height: 40px;
+  margin-top: 30px;
+  margin-bottom: 34px;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Submit button */
+.modal_type_signup-modal .modal__button {
+  width: 86px;
+  height: 36px;
+  padding: 8px 16px;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 4px;
+  opacity: 0.3;
+  white-space: nowrap;
+}
+
+.modal_type_signup-modal .modal__button:enabled {
+  opacity: 1;
+}
+
+.modal_type_signup-modal .modal__button:hover {
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.modal_type_signup-modal .modal__button:disabled:hover {
+  opacity: 0.3;
+}
+
+/* Additional text */
+.modal_type_signup-modal .modal__additional-text {
+  width: 73px;
+  height: 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #000;
+  opacity: 0.5;
+  text-decoration: none;
+}
+
+/* Error message */
+.signup-modal__error-message {
+  width: 198px;
+  height: 20px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #ff4d00;
+  margin-top: 20px;
+}

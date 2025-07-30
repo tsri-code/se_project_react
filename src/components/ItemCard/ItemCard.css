@@ -9,9 +9,17 @@
   border-radius: 19px;
 }
 
-.card__title {
+.card__header {
   position: absolute;
-  top: 15px;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card__title {
   margin: 0;
   color: #000;
   font-size: 16px;
@@ -22,7 +30,26 @@
   padding: 2px 12px;
   background-color: white;
   border-radius: 4px;
-  gap: 8px;
+}
+
+.card__like-button {
+  width: 18px;
+  height: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.card__like-button:hover svg path {
+  stroke: rgba(0, 0, 0, 1);
+}
+
+.card__like-button_active:hover svg path {
+  stroke: #ff0000;
 }
 
 .card__image {

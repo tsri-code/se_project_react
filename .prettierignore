@@ -1,0 +1,11 @@
+# Ignore normalize.css from formatting
+src/vendor/normalize.css
+
+# Ignore dist folder
+dist/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore build artifacts
+*.tsbuildinfo 

@@ -11,6 +11,9 @@ function ModalWithForm({
   name,
   isButtonDisabled,
   onSubmit,
+  additionalButtonText,
+  onAdditionalButtonClick,
+  hasError,
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -31,20 +34,39 @@ function ModalWithForm({
   return (
     <div className={`modal modal_type_${name} ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__overlay" onClick={onClose}></div>
-      <div className="modal__container">
+      <div
+        className={`modal__container ${
+          (name === "login-modal" || name === "signup-modal") && hasError
+            ? "modal__container_error"
+            : ""
+        }`}
+      >
         <h2 className="modal__title">{title}</h2>
         <button type="button" className="modal__close-button" onClick={onClose}>
           <img src={closeIcon} alt="Close" className="modal__close-icon" />
         </button>
         <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
-          <button
-            type="submit"
-            className="modal__button"
-            disabled={isButtonDisabled}
-          >
-            {buttonText}
-          </button>
+          <div className="modal__button-container">
+            <button
+              type="submit"
+              className="modal__button"
+              disabled={isButtonDisabled}
+            >
+              {buttonText}
+            </button>
+            {additionalButtonText && (
+              <span
+                className="modal__additional-text"
+                onClick={onAdditionalButtonClick}
+                style={{
+                  cursor: onAdditionalButtonClick ? "pointer" : "default",
+                }}
+              >
+                {additionalButtonText}
+              </span>
+            )}
+          </div>
         </form>
       </div>
     </div>
