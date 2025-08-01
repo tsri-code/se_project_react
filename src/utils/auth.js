@@ -1,8 +1,6 @@
-const baseUrl = "http://localhost:3001";
+import { checkResponse } from "./api.js";
 
-function checkResponse(res) {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-}
+const baseUrl = "http://localhost:3001";
 
 // User registration
 function signup({ name, avatar, email, password }) {

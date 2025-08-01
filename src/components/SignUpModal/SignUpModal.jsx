@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { isValidEmail } from "../../utils/validation";
 import "./SignUpModal.css";
 
 function SignUpModal({ isOpen, onClose, onSignUp, onLoginClick }) {
@@ -25,9 +26,9 @@ function SignUpModal({ isOpen, onClose, onSignUp, onLoginClick }) {
     }
   };
 
-  // Reset form when modal opens/closes
+  // Reset form when modal opens
   useEffect(() => {
-    if (!isOpen) {
+    if (isOpen) {
       setName("");
       setAvatar("");
       setEmail("");
@@ -55,12 +56,6 @@ function SignUpModal({ isOpen, onClose, onSignUp, onLoginClick }) {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
     if (errorMessage) setErrorMessage("");
-  };
-
-  // Email validation function
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
   };
 
   // Button is enabled when all required fields are entered

@@ -4,7 +4,7 @@ import "./Header.css";
 import logo from "../../assets/main-logo.svg";
 import user from "../../assets/user-logo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 function Header({
   handleAddGarment,

@@ -28,8 +28,8 @@ import {
 import { signup, signin, getUserInfo } from "../../utils/auth";
 
 // Context imports
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.js";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
 // CSS imports
 import "./App.css";
@@ -118,10 +118,6 @@ function App() {
         setCurrentUser(user);
         setIsLoggedIn(true);
         closeActiveModal();
-      })
-      .catch((err) => {
-        console.log(err);
-        throw err;
       });
   };
 
@@ -135,10 +131,6 @@ function App() {
         setCurrentUser(user);
         setIsLoggedIn(true);
         closeActiveModal();
-      })
-      .catch((err) => {
-        console.log(err);
-        throw err;
       });
   };
 
@@ -167,23 +159,18 @@ function App() {
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
     // Check if this card is not currently liked
-    !isLiked
+    (!isLiked
       ? // if so, send a request to add the user's id to the card's likes array
         addCardLike(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
-          })
-          .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
         removeCardLike(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
-          })
-          .catch((err) => console.log(err));
+    )
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === id ? updatedCard : item))
+        );
+      })
+      .catch((err) => console.log(err));
   };
 
   // Close modal on Escape key
